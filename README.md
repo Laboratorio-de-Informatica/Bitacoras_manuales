@@ -1,93 +1,85 @@
 # Bitácoras de Monitoría
 
-Guías paso a paso para los monitores del laboratorio. 
+Guías paso a paso para los monitores del Laboratorio de Informática. La idea es que el monitor que llegue después no tenga que adivinar cómo se hace cada cosa.
 
 Cada guía se abre en un visor que sube encima de la página. Ahí se pasa de un paso a otro con las flechas y la captura de cada paso aparece dentro de un computador dibujado. Si un paso es un comando de Cisco, en la pantalla sale una terminal que lo escribe sola. El avance de cada guía queda guardado en el navegador.
 
+La página sale con fondo claro. Con el botón de la luna, arriba a la derecha, se pasa a modo oscuro, y el navegador lo recuerda para la próxima vez.
+
+**Página publicada:** https://laboratorio-de-informatica.github.io/Bitacoras_manuales/
+(funciona cuando GitHub Pages esté activado, ver abajo)
+
+## Cómo agregar o corregir una guía (la forma fácil)
+
+No hace falta saber programar ni instalar nada. Todo se hace desde el navegador.
+
+1. Abre **editor.html** (en la página publicada, el enlace "Agregar o editar una guía" está al final).
+2. Escoge una guía para corregirla o "Crear una guía nueva", y llena el formulario. A la derecha vas viendo cómo queda cada paso dentro del computador.
+3. Si agregaste fotos nuevas, súbelas a la carpeta `img` del repositorio con el enlace "Abrir carpeta img en GitHub" (arrastras los archivos y le das **Commit changes**). El editor te dice exactamente qué fotos faltan por subir.
+4. Dale al botón verde **Copiar data.js completo**.
+5. Abre `js/data.js` en GitHub con el enlace "Abrir data.js en GitHub", borra todo (`Ctrl + A` y `Supr`), pega (`Ctrl + V`) y dale **Commit changes**.
+6. Espera uno o dos minutos y recarga la página publicada. Ya sale el cambio para todos.
+
+Lo que vas escribiendo se queda guardado como borrador en tu navegador, así que si cierras la pestaña no se pierde.
+
+Para dar formato al texto en el editor:
+
+| Escribes | Sale |
+| --- | --- |
+| `**Restart Now**` | negrita |
+| `` `C:\Isos` `` | texto de código |
+| `[[Ctrl+C]]` | teclas |
+| `{This PC > Properties}` | ruta de menús |
+| `_texto_` | cursiva |
+| `[otra guía](#router-fabrica)` | enlace a otra guía |
+
 ## Cómo abrir la página
 
-### Opción 1: en tu computador, sin instalar nada
+**Para todos, con el enlace:** https://laboratorio-de-informatica.github.io/Bitacoras_manuales/
 
-Abre la carpeta y dale doble clic a `index.html`. Se abre en el navegador y funciona completa.
+**En tu computador, sin internet:** descarga el repositorio (botón verde **Code** y luego **Download ZIP**), descomprímelo y dale doble clic a `index.html`. Funciona completa. Sin internet solo cambia la letra, porque las fuentes vienen de Google Fonts.
 
+**Para editar el código con VS Code:** abre la carpeta, instala la extensión **Live Server**, dale clic derecho a `index.html` y escoge **Open with Live Server**. La página se recarga sola cada vez que guardas.
 
-### Opción 2: con Live Server en VS Code (para editar)
+## Activar GitHub Pages (se hace una sola vez)
 
-Si vas a cambiar cosas, esta opción recarga la página sola cada vez que guardas.
+1. En el repositorio entra a **Settings** y luego a **Pages**.
+2. En **Source** escoge **Deploy from a branch**.
+3. En **Branch** escoge `main` y la carpeta `/ (root)`. Dale **Save**.
+4. Espera uno o dos minutos y recarga. Arriba sale el enlace.
 
-1. Abre la carpeta en VS Code.
-2. Instala la extensión **Live Server**.
-3. Dale clic derecho a `index.html` y escoge **Open with Live Server**.
+Desde ese momento, cada cambio que llegue a `main`, sea desde el editor, desde GitHub o con `git push`, se publica solo en uno o dos minutos.
 
-### Opción 3: publicada en internet con GitHub Pages
-
-Así cualquier monitor la abre con un enlace, sin descargar nada.
-
-1. Sube el proyecto al repositorio (ver la sección de abajo).
-2. En GitHub, entra al repositorio y ve a **Settings**, luego a **Pages**.
-3. En **Source** escoge **Deploy from a branch**.
-4. En **Branch** escoge `main` y la carpeta `/ (root)`. Dale **Save**.
-5. Espera uno o dos minutos y recarga. Arriba sale el enlace, que queda así:
-   `https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/`
-
-Cada vez que hagas `push` a `main`, la página publicada se actualiza sola en uno o dos minutos.
-
-Si el repositorio es privado, GitHub Pages solo funciona con algunos planes de pago o con GitHub Education. Con un repositorio público funciona gratis.
-
-## Cómo subirlo al repositorio
-
-Lo importante es que `index.html` quede en la raíz del repositorio, no dentro de otra carpeta. Si no, GitHub Pages no lo encuentra.
-
-Copia **el contenido** de esta carpeta (no la carpeta) dentro de la carpeta de tu repositorio clonado, para que quede así:
-
-```
-tu-repo/
-├── index.html
-├── README.md
-├── css/
-├── js/
-└── img/
-```
-
-Después, desde una terminal en la carpeta del repositorio:
-
-```bash
-git add .
-git commit -m "Agrega la página de bitácoras"
-git push origin main
-```
-
-Si tu rama principal se llama `master`, cambia `main` por `master`.
+Ojo: en un repositorio privado de una organización, GitHub Pages solo funciona si la organización tiene plan GitHub Team o Enterprise (o el beneficio de GitHub Education para organizaciones). Si no aparece la opción, la salida más sencilla es dejar el repositorio público. Las guías no tienen contraseñas, solo nombres de usuario como admin y rescate.
 
 ## Qué hay en cada carpeta
 
 | Archivo | Para qué sirve |
 | --- | --- |
-| `index.html` | La estructura de la página |
-| `css/styles.css` | Colores, tamaños y el computador dibujado |
-| `js/data.js` | **El contenido de todas las guías.** Es el archivo que más vas a tocar |
-| `js/app.js` | La lógica: el visor, las flechas, la búsqueda y el progreso |
+| `index.html` | La página de las bitácoras |
+| `editor.html` | El editor visual de guías |
+| `css/styles.css` | Colores, temas claro y oscuro, y el computador dibujado |
+| `css/editor.css` | Estilos del editor |
+| `js/data.js` | **El contenido de todas las guías** |
+| `js/app.js` | La lógica de la página: visor, flechas, búsqueda, tema y progreso |
+| `js/editor.js` | La lógica del editor |
 | `img/` | Las capturas de cada paso |
 
-## Cómo agregar o corregir una guía
+## Editar data.js a mano (para quien prefiera)
 
-Todo el contenido está en `js/data.js`. No hace falta tocar el HTML ni el CSS.
-
-1. Guarda las capturas en `img/`. Ponles un nombre corto y sin espacios, por ejemplo `img/impresora_1.jpg`.
-2. Abre `js/data.js`, copia una guía que ya exista y cámbiale los datos. Revisa que `id` no se repita.
-3. Si es de un tema nuevo, agrega un grupo en `GRUPOS` y usa su `id` en el campo `grupo` de la guía.
-
-Así se ve un paso:
+También se puede editar `js/data.js` directamente. Cada guía tiene `id`, `grupo`, `titulo`, `resumen`, `portada`, `necesitas`, `pasos`, `ojo` y `pendientes`. Así se ve un paso:
 
 ```js
 { h: "Reinicia el router", p: "Si pregunta <code>Save?</code>, responde <b>no</b>.", cmd: "reload", img: "img/r_7.jpg",
   nota: "Un consejo que sale en un recuadro amarillo." }
 ```
 
-`h` es el título, `p` la explicación, `img` la captura que va en la pantalla, `cmd` el comando para copiar y `nota` un consejo. Solo `h` es obligatorio.
-
-Para dibujar una ruta de menús se usa `R("This PC", "Properties")`, y para teclas `K("Ctrl", "C")`. Esto solo funciona dentro de textos con comillas invertidas (`` ` ``), como en las guías que ya están.
+`h` es el título, `p` la explicación, `img` la captura, `cmd` el comando para copiar y `nota` un consejo. Solo `h` es obligatorio. Si un grupo es nuevo, se agrega en `GRUPOS`.
 
 Cada guía tiene su propio enlace. Por ejemplo, `index.html#router-fabrica` abre directo la guía del router.
 
+## Por qué JavaScript y no Java
 
+La página está hecha con HTML, CSS y JavaScript, sin librerías ni nada que instalar. JavaScript es el lenguaje que corre dentro del navegador, y es lo que hace funcionar el visor, el editor, la terminal que escribe sola y el progreso guardado.
+
+Java necesitaría un servidor prendido todo el tiempo, y aquí todo pasa en el navegador. Además, con archivos sueltos la página se publica gratis en GitHub Pages y abre con doble clic sin configurar nada.

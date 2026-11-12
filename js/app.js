@@ -38,6 +38,10 @@
     restart: '<svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>'
   };
 
+  // Foto de la tarjeta: la que se escogió, o la primera captura de la guía
+  const portada = (g) => g.portada || (g.pasos.find((s) => s.img) || {}).img || "";
+  const imgPortada = (g) => portada(g) ? `<img src="${portada(g)}" alt="" loading="lazy">` : `<span class="no-img">${ICON[g.grupo] || ICON.steps}</span>`;
+
   function ring(p) {
     const c = 2 * Math.PI * 10;
     return `<svg class="ring" viewBox="0 0 26 26" aria-hidden="true"><circle class="t" cx="13" cy="13" r="10" stroke-width="4"/><circle class="v" cx="13" cy="13" r="10" stroke-width="4" stroke-dasharray="${c}" stroke-dashoffset="${c * (1 - p)}"/></svg>`;
@@ -80,7 +84,7 @@
       const e = estado(g);
       return `<article class="card" style="animation-delay:${i * 50}ms">
         <a class="cover" href="#${g.id}" tabindex="-1" aria-hidden="true">
-          <img src="${g.portada}" alt="" loading="lazy">
+          ${imgPortada(g)}
           <span class="cover-chip">${grupoDe(g).titulo}</span>
           <span class="cover-steps">${ICON.steps}${g.pasos.length} pasos</span>
         </a>
@@ -119,7 +123,7 @@
     $("#side").innerHTML = `
       <section class="side-card feature">
         <h2>${ICON.play}${enCurso ? "Sigue donde ibas" : "Empieza por aquí"}</h2>
-        <div class="feature-img"><img src="${g.portada}" alt="" loading="lazy"></div>
+        <div class="feature-img">${imgPortada(g)}</div>
         <h3>${g.titulo}</h3>
         <div class="row"><span>${grupoDe(g).titulo}</span><span>${e.d} de ${e.n}</span></div>
         <div class="bar"><i style="width:${e.p * 100}%"></i></div>
@@ -408,6 +412,22 @@
     if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) mostrar(slide + (dx < 0 ? 1 : -1));
     x0 = null;
   });
+
+  /* ---------- Tema claro y oscuro ---------- */
+  const themeBtn = $("#themeBtn");
+  function pintarTema() {
+    const oscuro = document.documentElement.dataset.theme === "dark";
+    themeBtn.setAttribute("aria-label", oscuro ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
+    document.querySelector('meta[name="theme-color"]').content = oscuro ? "#0a2614" : "#e7f6eb";
+  }
+  themeBtn.addEventListener("click", () => {
+    const oscuro = document.documentElement.dataset.theme !== "dark";
+    if (oscuro) document.documentElement.dataset.theme = "dark";
+    else delete document.documentElement.dataset.theme;
+    store.set("bm-tema", oscuro ? "dark" : "light");
+    pintarTema();
+  });
+  pintarTema();
 
   /* ---------- Enlaces: index.html#id-de-la-guia abre esa guía ---------- */
   function ruta() {
