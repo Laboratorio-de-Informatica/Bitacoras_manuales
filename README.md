@@ -1,10 +1,8 @@
 # Bitácoras de Monitoría
 
-Guías paso a paso para los monitores del Laboratorio de Informática. La idea es que el monitor que llegue después no tenga que adivinar cómo se hace cada cosa.
+Guías paso a paso para los monitores del Laboratorio de Informática.
 
 Cada guía se abre en un visor que sube encima de la página. Ahí se pasa de un paso a otro con las flechas y la captura de cada paso aparece dentro de un computador dibujado. Si un paso es un comando de Cisco, en la pantalla sale una terminal que lo escribe sola. El avance de cada guía queda guardado en el navegador.
-
-La página sale con fondo claro. Con el botón de la luna, arriba a la derecha, se pasa a modo oscuro, y el navegador lo recuerda para la próxima vez.
 
 **Página publicada:** https://laboratorio-de-informatica.github.io/Bitacoras_manuales/
 (funciona cuando GitHub Pages esté activado, ver abajo)
@@ -50,7 +48,7 @@ Para dar formato al texto en el editor:
 
 Desde ese momento, cada cambio que llegue a `main`, sea desde el editor, desde GitHub o con `git push`, se publica solo en uno o dos minutos.
 
-Ojo: en un repositorio privado de una organización, GitHub Pages solo funciona si la organización tiene plan GitHub Team o Enterprise (o el beneficio de GitHub Education para organizaciones). Si no aparece la opción, la salida más sencilla es dejar el repositorio público. Las guías no tienen contraseñas, solo nombres de usuario como admin y rescate.
+En un repositorio privado de una organización, GitHub Pages solo funciona si la organización tiene plan GitHub Team o Enterprise (o el beneficio de GitHub Education para organizaciones). Si no aparece la opción, la salida más sencilla es dejar el repositorio público. Las guías no tienen contraseñas, solo nombres de usuario como admin y rescate.
 
 ## Qué hay en cada carpeta
 
@@ -77,9 +75,3 @@ También se puede editar `js/data.js` directamente. Cada guía tiene `id`, `grup
 `h` es el título, `p` la explicación, `img` la captura, `cmd` el comando para copiar y `nota` un consejo. Solo `h` es obligatorio. Si un grupo es nuevo, se agrega en `GRUPOS`.
 
 Cada guía tiene su propio enlace. Por ejemplo, `index.html#router-fabrica` abre directo la guía del router.
-
-## Por qué JavaScript y no Java
-
-La página está hecha con HTML, CSS y JavaScript, sin librerías ni nada que instalar. JavaScript es el lenguaje que corre dentro del navegador, y es lo que hace funcionar el visor, el editor, la terminal que escribe sola y el progreso guardado.
-
-Java necesitaría un servidor prendido todo el tiempo, y aquí todo pasa en el navegador. Además, con archivos sueltos la página se publica gratis en GitHub Pages y abre con doble clic sin configurar nada.
