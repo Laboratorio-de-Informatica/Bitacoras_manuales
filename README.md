@@ -32,7 +32,7 @@ Así cualquier monitor la abre con un enlace, sin descargar nada.
 
 Cada vez que hagas `push` a `main`, la página publicada se actualiza sola en uno o dos minutos.
 
-Ojo: si el repositorio es privado, GitHub Pages solo funciona con algunos planes de pago o con GitHub Education. Con un repositorio público funciona gratis.
+Si el repositorio es privado, GitHub Pages solo funciona con algunos planes de pago o con GitHub Education. Con un repositorio público funciona gratis.
 
 ## Cómo subirlo al repositorio
 
