@@ -1,6 +1,6 @@
 # Bitácoras de Monitoría
 
-Guías paso a paso para los monitores del laboratorio. La idea es que el monitor que llegue después no tenga que adivinar cómo se hace cada cosa.
+Guías paso a paso para los monitores del laboratorio. 
 
 Cada guía se abre en un visor que sube encima de la página. Ahí se pasa de un paso a otro con las flechas y la captura de cada paso aparece dentro de un computador dibujado. Si un paso es un comando de Cisco, en la pantalla sale una terminal que lo escribe sola. El avance de cada guía queda guardado en el navegador.
 
@@ -10,7 +10,6 @@ Cada guía se abre en un visor que sube encima de la página. Ahí se pasa de un
 
 Abre la carpeta y dale doble clic a `index.html`. Se abre en el navegador y funciona completa.
 
-Si no hay internet, la página funciona igual pero con otra letra, porque las fuentes se descargan de Google Fonts.
 
 ### Opción 2: con Live Server en VS Code (para editar)
 
@@ -91,8 +90,4 @@ Para dibujar una ruta de menús se usa `R("This PC", "Properties")`, y para tecl
 
 Cada guía tiene su propio enlace. Por ejemplo, `index.html#router-fabrica` abre directo la guía del router.
 
-## Por qué JavaScript y no Java
 
-La página está hecha con HTML, CSS y JavaScript, sin librerías ni nada que instalar. JavaScript es el lenguaje que corre dentro del navegador, y es lo que hace que funcione el visor, las flechas, la terminal que escribe sola y el progreso guardado.
-
-Java necesitaría un servidor corriendo todo el tiempo, y eso no le sirve a esta página: todo pasa en el navegador. Además, con archivos sueltos se puede publicar gratis en GitHub Pages y abrir con doble clic sin configurar nada.
