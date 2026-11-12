@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bitácoras de Monitoría</title>
+  <meta name="description" content="Guías paso a paso para los monitores del laboratorio.">
+  <meta name="theme-color" content="#0a2614">
+  <link rel="icon" href="img/icono.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <svg class="lines" aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="none">
+    <path d="M-40 640 C 300 520, 520 760, 900 560 S 1380 300, 1500 360"/>
+    <path d="M980 -40 C 1060 180, 1240 240, 1480 220"/>
+    <path d="M-60 120 C 180 60, 300 260, 520 180"/>
+  </svg>
+
+  <div class="shell">
+    <header class="top">
+      <a class="logo" href="#">
+        <span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2.5Z"/><path d="M8 7h7M8 11h5"/></svg></span>
+        <span class="logo-text"><b>Bitácoras</b><small>Monitoría de laboratorio</small></span>
+      </a>
+      <label class="search" for="q">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Busca dominio, router, PuTTY…" autocomplete="off">
+      </label>
+    </header>
+
+    <div class="panel">
+      <nav class="tabs" id="tabs" aria-label="Grupos de guías"></nav>
+
+      <div class="panel-grid">
+        <main class="main" id="main">
+          <div class="sec-head">
+            <h1 id="secTitle">Todas las guías</h1>
+            <span id="secCount"></span>
+          </div>
+          <div class="cards" id="cards"></div>
+          <p class="empty" id="empty" hidden>No encontré guías con eso. Prueba con otra palabra.</p>
+
+          <div class="sec-head groups-head">
+            <h2>Grupos</h2>
+          </div>
+          <div class="groups" id="groups"></div>
+        </main>
+
+        <aside class="side" id="side"></aside>
+      </div>
+    </div>
+
+    <footer class="foot">Tu avance se guarda en este navegador. Hecho por los monitores para los monitores.</footer>
+  </div>
+
+  <!-- Visor de pasos -->
+  <div class="viewer" id="viewer" hidden>
+    <div class="viewer-backdrop" data-close></div>
+    <section class="viewer-panel" role="dialog" aria-modal="true" aria-labelledby="vTitle">
+      <header class="v-head">
+        <div class="v-title">
+          <span class="v-group" id="vGroup"></span>
+          <h2 id="vTitle"></h2>
+        </div>
+        <button class="v-close" data-close aria-label="Cerrar guía">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+      <div class="v-progress" id="vDots" aria-label="Pasos"></div>
+
+      <div class="v-body">
+        <div class="desk">
+          <button class="arrow prev" id="vPrev" aria-label="Paso anterior"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+          <div class="pc">
+            <div class="monitor">
+              <div class="screen" id="vScreen"></div>
+              <span class="cam"></span>
+              <span class="led"></span>
+            </div>
+            <div class="neck"></div>
+            <div class="foot-base"></div>
+          </div>
+          <button class="arrow next" id="vNext" aria-label="Paso siguiente"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+        </div>
+        <div class="info" id="vInfo"></div>
+      </div>
+
+      <footer class="v-foot">
+        <button class="btn ghost" id="vBack"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>Anterior</button>
+        <span class="v-count" id="vCount"></span>
+        <button class="btn primary" id="vFwd">Siguiente<svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+      </footer>
+    </section>
+  </div>
+
+  <!-- Captura ampliada -->
+  <div class="zoom" id="zoom" hidden>
+    <img id="zoomImg" alt="">
+    <button class="v-close" id="zoomClose" aria-label="Cerrar captura"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
